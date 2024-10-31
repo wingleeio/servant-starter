@@ -1,0 +1,11 @@
+indentation: 4
+comma-style: leading
+record-brace-space: true
+diff-friendly-import-export: true
+respectful: true
+haddock-style: single-line
+newlines-between-decls: 1
+import-export-style: leading
+function-arrows: leading # Controls -> alignment
+operators-in-chain: leading # Controls . chain alignment
+record-brace-space: true

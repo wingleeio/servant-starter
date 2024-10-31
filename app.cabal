@@ -1,0 +1,110 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.37.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           app
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/app#readme>
+homepage:       https://github.com/githubuser/app#readme
+bug-reports:    https://github.com/githubuser/app/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2024 Author name here
+license:        BSD-3-Clause
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/app
+
+library
+  exposed-modules:
+      Controllers.Documentation
+      Controllers.Posts
+      Controllers.Users
+      Lib
+      Models.Post
+      Models.User
+      Routes
+      Views.Scalar
+  other-modules:
+      Paths_app
+  autogen-modules:
+      Paths_app
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , blaze-html
+    , blaze-markup
+    , lens
+    , openapi3
+    , servant-blaze
+    , servant-openapi3
+    , servant-server
+    , text
+    , wai
+    , warp
+  default-language: Haskell2010
+
+executable app-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_app
+  autogen-modules:
+      Paths_app
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , app
+    , base
+    , blaze-html
+    , blaze-markup
+    , lens
+    , openapi3
+    , servant-blaze
+    , servant-openapi3
+    , servant-server
+    , text
+    , wai
+    , warp
+  default-language: Haskell2010
+
+test-suite app-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_app
+  autogen-modules:
+      Paths_app
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , app
+    , base
+    , blaze-html
+    , blaze-markup
+    , hspec
+    , hspec-wai
+    , hspec-wai-json
+    , lens
+    , openapi3
+    , servant-blaze
+    , servant-openapi3
+    , servant-server
+    , text
+    , wai
+    , warp
+  default-language: Haskell2010
