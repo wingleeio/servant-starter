@@ -11,18 +11,23 @@ import qualified Controllers.Documentation as Documentation
 import Network.Wai
 import Network.Wai.Handler.Warp
 import Routes (Routes, routes)
-import Servant
+import Servant hiding (Context)
+import State
+import System.Environment (lookupEnv)
 
 type API = Routes :<|> "documentation" :> Documentation.API
 
 startApp :: IO ()
-startApp = run 8080 app
+startApp = do
+    env <- lookupEnv "ENV"
+    let context = Context {isDevelopment = env == Just "development"}
+    run 8080 (app context)
 
-app :: Application
-app = serve api server
+app :: Context -> Application
+app context = serve api (hoistServer api (nt context) server)
 
 api :: Proxy API
 api = Proxy
 
-server :: Server API
+server :: ServerT API AppM
 server = routes :<|> Documentation.controller
